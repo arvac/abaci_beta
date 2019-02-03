@@ -1,0 +1,21 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.spaceplus.ar"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.spaceplus.ar"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.spaceplus.ar"
+    }
+  },
+  "dependent_plugins": {}
+}

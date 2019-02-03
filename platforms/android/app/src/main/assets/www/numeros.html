@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Droppable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/numeros.css">
+  <link rel="stylesheet" href="css/styl.css"> <!-- Resource style -->
+  <link rel="stylesheet" href="css/star.css"> <!-- animacion de estrellas -->
+  <style>
+  #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+  </style>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script>
+    document.addEventListener("backbutton", onBackKeyDown, false);
+    function onBackKeyDown(e) { 
+      e.preventDefault(); 
+      window.location.href='principal.html#aprender'; 
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+  (function ($) {
+    
+    $.support.touch = 'ontouchend' in document;
+    
+    if (!$.support.touch) {
+    return;
+    }
+    var mouseProto = $.ui.mouse.prototype,
+        _mouseInit = mouseProto._mouseInit,
+        touchHandled;
+    function simulateMouseEvent (event, simulatedType) { //
+    //
+        if (event.originalEvent.touches.length > 1) {
+        return;
+        }
+    event.preventDefault(); //
+    var touch = event.originalEvent.changedTouches[0],
+        simulatedEvent = document.createEvent('MouseEvents');
+    // 
+    simulatedEvent.initMouseEvent(
+        simulatedType,    // type
+        true,             // bubbles                    
+        true,             // cancelable                 
+        window,           // view                       
+        1,                // detail                     
+        touch.screenX,    // screenX                    
+        touch.screenY,    // screenY                    
+        touch.clientX,    // clientX                    
+        touch.clientY,    // clientY                    
+        false,            // ctrlKey                    
+        false,            // altKey                     
+        false,            // shiftKey                   
+        false,            // metaKey                    
+        0,                // button                     
+        null              // relatedTarget              
+        );
+
+    // 
+    event.target.dispatchEvent(simulatedEvent);
+    }
+    mouseProto._touchStart = function (event) {
+    var self = this;
+    //
+    if (touchHandled || !self._mouseCapture(event.originalEvent.changedTouches[0])) {
+        return;
+        }
+    // 
+    touchHandled = true;
+    // 
+    self._touchMoved = false;
+    //
+    simulateMouseEvent(event, 'mouseover');
+    //
+    simulateMouseEvent(event, 'mousemove');
+    // 
+    simulateMouseEvent(event, 'mousedown');
+    };
+
+    mouseProto._touchMove = function (event) {
+    // 
+    if (!touchHandled) {
+        return;
+        }
+    // 
+    this._touchMoved = true;
+    // 
+    simulateMouseEvent(event, 'mousemove');
+    };
+    mouseProto._touchEnd = function (event) {
+    //
+    if (!touchHandled) {
+        return;
+    }
+    //
+    simulateMouseEvent(event, 'mouseup');
+    //
+    simulateMouseEvent(event, 'mouseout');
+    //
+    if (!this._touchMoved) {
+      // 
+      simulateMouseEvent(event, 'click');
+    }
+    // 
+    touchHandled = false;
+    };
+    mouseProto._mouseInit = function () {
+    var self = this;
+    //
+    self.element
+        .on('touchstart', $.proxy(self, '_touchStart'))
+        .on('touchmove', $.proxy(self, '_touchMove'))
+        .on('touchend', $.proxy(self, '_touchEnd'));
+
+    // 
+    _mouseInit.call(self);
+    };
+})(jQuery);
+  </script>
+  <script>
+ var correctCards = 0;
+$( init );
+ 
+function init() {
+
+  // 
+  $('#successMessage').hide();
+  $('#successMessage').css( {
+    left: '580px',
+    top: '250px',
+    width: 0,
+    height: 0
+  } );
+
+  //
+  correctCards = 0;
+  $('#cardPile').html( '' );
+  $('#cardSlots').html( '' );
+
+  // 
+  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10];
+  numbers.sort( function() { return Math.random() - .5 } );
+
+  for ( var i=0; i<10; i++ ) {
+    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+      containment: '#content',
+      stack: '#cardPile div',
+      cursor: 'move',
+      revert: true
+    } );
+  }
+
+  // Crear  ,'once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho' ,'diecinueve','veinte
+  var words = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10];
+  for ( var i=0; i<10; i++ ) {
+   // $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+     $('<div>' + words[i] + '</div>').data( 'number', words[i] ).attr( 'id', 'card'+words[i]  ).appendTo( '#cardSlots' ).droppable( {
+      accept: '#cardPile div',
+      accept: '#cardPile div',
+      hoverClass: 'hovered',
+      drop: handleCardDrop
+    } );
+  }
+
+}
+
+function handleCardDrop( event, ui ) {
+  var slotNumber = $(this).data( 'number' );
+  var cardNumber = ui.draggable.data( 'number' );
+
+
+  if ( slotNumber == cardNumber ) {
+    ui.draggable.addClass( 'correct' );
+    ui.draggable.draggable( 'disable' );
+    $(this).droppable( 'disable' );
+    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+    ui.draggable.draggable( 'option', 'revert', false );
+    correctCards++;
+  } 
+  
+ 
+  if ( correctCards == 10) {
+    $('#successMessage').show();
+    $('#successMessage').animate( {
+      left: '80px',
+      top: '10px',
+      width: '200px',
+      height: '100px',
+      opacity: 10
+    } );
+  }
+
+}
+  </script>
+  <style type="text/css">
+    .cuerpo{
+      background: #3388cc;
+    }
+  </style>
+</head>
+<body class="cuerpo">
+   <div data-role="page" id="login" data-theme="a">
+      <div data-role="header">
+        <section class="cover-full-width" style=" background-repeat: no-repeat;" data-150-top="background-position: 0px 0px;" data-top="background-position: 0px -50px;">
+          <div id="stars"></div>
+          <div id="stars2"></div>
+          <div id="stars3"></div>
+            <section class="cd-intro">
+              <div id="cardSlots"> </div>
+              <div id="cardPile"> </div>
+                
+                <div id="successMessage">
+                  <h2>Felicidades ganaste!</h2>
+                  <button onclick="init()">Intentar de Nuevo</button>
+              
+                </div>
+          </section>
+        </section>
+      </div>
+    </div>
+</body>
+</html>

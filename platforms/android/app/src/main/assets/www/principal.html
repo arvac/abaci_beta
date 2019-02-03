@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Abaci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta charset="utf-8">
+    <script src="jquery-mobile/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="themes/abacithemedos.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <!-- CSS reset      <link rel="stylesheet" href="css/reset.css">  
+     <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script> -->
+    <link rel="stylesheet" href="css/styl.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="css/star.css"> <!-- animacion de estrellas -->
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
+   
+   <script>
+      document.addEventListener("backbutton", onBackKeyDown, false);
+      function onBackKeyDown(e) { 
+        e.preventDefault(); 
+        window.location.href='principal.html#perfil';
+      }
+</script>
+     <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+   <script type="text/javascript">
+      
+      function relink() {
+      setTimeout("location.href='indexx.html'", 4500);
+        }
+         function numeros() {
+      setTimeout("location.href='numeros.html'", 400);
+        }
+          function numeros11() {
+      setTimeout("location.href='numeros11.html'", 400);
+        }
+          function numeros21() {
+      setTimeout("location.href='numeros21.html'", 400);
+        }
+          function match() {
+      setTimeout("location.href='match.html'", 400);
+        }
+           function infor() {
+      setTimeout("location.href='information.html'", 400);
+        }
+   </script>
+<script type="text/javascript" src="js/login.js"></script>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+    </head>
+    <body >
+    <!--página de agregar-->
+    <div data-role="page" id="agregar"  data-theme="b">
+      <div data-role="header" data-position="fixed">
+         <div class="ui-btn-left">
+        <a  href="#admin" data-role="button" data-inline="true" data-icon="action" data-iconpos="notext" data-transition="slide" >admin</a>
+       
+        </div>
+        <h1>Agregar</h1>
+        <div class="ui-btn-right">
+   
+        </div>
+      </div>
+         <div data-role="fieldcontain">
+         <input type="text" name="ti_nombre" id="title" value="" placeholder="nombre" />
+        
+         </div>
+            
+         <button id="insert" >Guardar</button> 
+         <div id="clouds">
+          <div ><img class="cloud x1" src="images/naverun.png"></div>
+          <!-- Time for multiple clouds to dance around -->
+          <div ><img class="cloud x2" src="images/naverun.png"></div>
+          <div ><img class="cloud x3" src="images/naverun.png"></div>
+          <div ><img class="cloud x4" src="images/naverun.png"></div>
+          <div ><img class="cloud x5" src="images/naverun.png"></div>
+         </div>
+        <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                 <li><a id="showTable" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Actividades</a></li>
+              
+            </ul>
+        </div>
+       </div>    
+      </div>
+
+  <!-- esta página es la de home-->
+     <div data-role="page" id="home"  data-theme="a" >
+       <div data-role="header" data-position="fixed">
+        <div class="ui-btn-left">
+        <a  href="#admin" data-role="button" data-inline="true" data-icon="action" data-iconpos="notext" data-transition="slide" >admin</a>
+       
+        </div>
+        <h1>Actividades</h1>
+        <div class="ui-btn-right">
+        </div>
+      </div>  
+      <div data-role="content" >
+            <section class="cd-intro">
+                    <button id="insert" href ><a onclick="numeros();" id="showTable" href="#perfil" data-icon="home" class="ui-btn-active" data-transition="slide">Reconocer Números 1 - 10</a></button> 
+                    <button id="insert" href ><a onclick="numeros11();" id="showTable" href="#perfil" data-icon="home" class="ui-btn-active" data-transition="slide">Reconocer Números 11 - 20</a></button> 
+                      <button id="insert" href ><a onclick="numeros21();" id="showTable" href="#perfil" data-icon="home" class="ui-btn-active" data-transition="slide">Reconocer Números 21 - 30</a></button> 
+                <button id="insert" href ><a id="showTable" href="#numero" onclick="match();" data-icon="home" class="ui-btn-active" data-transition="slide">Actividad memorizar Números</a></button> 
+            </section>
+
+            <div id="TableData"  class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop" >
+                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span>Error interno : intentar de nuevo  .!!</span>
+                  <div class="chip">
+                    
+                  
+                  </div>
+
+                  </div>      
+                  <div class="mdl-card__actions mdl-card--border">
+                      
+                      <img src="images/oops.png" alt="Person" width="46" height="46">
+                    </div>   
+            </div>
+      </div>
+           
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a id="showAdmin" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Actividades</a></li>
+                <li><a href="#agregar" data-icon="plus" data-transition="slide">Agregar</a></li>
+                <li><a id="showPuntajes" href="#puntajes" data-icon="grid" data-transition="slide">Puntajes</a></li>
+
+            </ul>
+        </div>
+       </div>        
+    </div>
+    
+       <!--página de aprender-->
+    <div data-role="page" id="aprender"  data-theme="b">
+      <div data-role="header" data-position="fixed">
+         <div class="ui-btn-left">
+        <a  href="#admin" data-role="button" data-inline="true" data-icon="user" data-iconpos="notext" data-transition="slide" >admin</a>
+       
+        </div>
+        <h1>Aprender</h1>
+        <div class="ui-btn-right">
+      
+        </div>
+      </div>
+      <div data-role="fieldcontain"> </div>
+            
+         <button id="insert" href ><a onclick="numeros();" id="showTable" href="#perfil" data-icon="home" class="ui-btn-active" data-transition="slide">Actividad reconocimiento de Números</a></button> 
+         <button id="insert" href ><a id="showTable" href="#numero" onclick="match();" data-icon="home" class="ui-btn-active" data-transition="slide">Actividad memorizar Números</a></button> 
+        <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                 <li><a id="showAdmin" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Actividades</a></li>
+                <li><a id="showPuntajes" href="#agregar" data-icon="grid" data-transition="slide">Agregar</a></li>
+               
+            </ul>
+        </div>
+       </div>    
+      </div>
+      
+    <!--perfil-->
+    <div data-role="page" id="perfil"  data-theme="b"  onload="relink();">
+       <div data-role="header" data-position="fixed">
+          <div class="ui-btn-left">
+        <a  href="#admin" data-role="button" data-inline="true" data-icon="action" data-iconpos="notext" data-transition="slide" >admin</a>
+       
+        </div>
+          <h1>Perfil</h1>
+          <div class="ui-btn-right">
+         
+          </div>
+        </div>
+       <div data-role="content">
+         <div class="list">
+        ID: <span id="id"></span>
+     
+      
+      <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <div class="loader"></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Espere..Por favor</span>
+              </div>
+             
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect"> Cargando...</a>
+              </div>
+       </div>
+
+            <section class="cover-full-width" style="background: url('https://nordvpn.com/wp-content/uploads/2016/03/download_head_bg.j'); background-repeat: no-repeat;" data-150-top="background-position: 0px 0px;" data-top="background-position: 0px -50px;">
+              <div id="stars"></div>
+              <div id="stars2"></div>
+              <div id="stars3"></div>
+            </section>
+       </div>    
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a id="showAdmin" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Ajustes</a></li>
+                <li><a href="#agregar" data-icon="plus" data-transition="slide">Agregar</a></li>
+                <li><a id="showPuntajes" href="#puntajes" data-icon="grid" data-transition="slide">Puntajes</a></li>
+            </ul>
+        </div>
+       </div>        
+    </div>
+    
+    
+    <!--página de puntajes-->
+    <div data-role="page" id="puntajes" data-theme="a">
+       <div data-role="header" data-position="fixed">
+           <div class="ui-btn-left">
+        <a  href="#admin" data-role="button" data-inline="true" data-icon="action" data-iconpos="notext" data-transition="slide" >admin</a>
+       
+        </div>
+          <h1  style="color: #ffffff;">Puntaje Record&nbsp;&nbsp;<span id="highScore" style="color: #ffffff;"></span>  </h1>
+        
+          <div class="ui-btn-right">
+        
+          </div>
+        </div>
+        <div data-role="content">
+          <div id="listas"  class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop" >
+             
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>Error interno : intentar de nuevo!!</span>
+              <div class="chip">
+                
+               
+              </div>
+
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+               
+                <img src="images/oops.png" alt="Person" width="46" height="46">
+              </div>
+           </div>
+
+            <section class="cover-full-width" style="background: url('https://nordvpn.com/wp-content/uploads/2016/03/download_head_bg.j'); background-repeat: no-repeat;" data-150-top="background-position: 0px 0px;" data-top="background-position: 0px -50px;">
+              <div id="stars"></div>
+              <div id="stars2"></div>
+              <div id="stars3"></div>
+            </section>
+        </div>
+        <div data-role="footer" data-position="fixed">
+          <div data-role="navbar">
+              <ul>
+                <li><a id="showAdmin" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Actividades</a></li>
+                <li><a href="#agregar" data-icon="plus" data-transition="slide">Agregar</a></li>
+                <li><a id="showPuntajes" href="#puntajes" data-icon="grid" data-transition="slide">Puntajes</a></li>
+              </ul>
+          </div>
+       </div>     
+    </div>
+    
+      <!--página de log admin-->
+    <div data-role="page" id="admin" data-theme="a">
+      <div data-role="header">
+        <section class="cover-full-width" style=" background-repeat: no-repeat;" data-150-top="background-position: 0px 0px;" data-top="background-position: 0px -50px;">
+          <div id="stars"></div>
+          <div id="stars2"></div>
+          <div id="stars3"></div>
+            <section class="cd-intro">
+             <div class="cd-intro-content mask">
+              <h1 class="ani" data-content="Administrador"><span>Administrador</span></h1>
+              <form action="" name="mylogin">
+              <div data-role="content">
+              <div class="username" data-role="fieldcontain">
+                <label for="username"> Usuario </label> <input name="username"
+                id="username" placeholder="ingrese su nombre por favor" value="" type="text">
+              </div>
+              <div class="psw" data-role="fieldcontain">
+                <label for="psw"> Password </label> <input name="password" id="psw"
+                placeholder="ingrese password por favor" value="" type="text">
+              </div>
+                <input id="login" value="Ingresar" type="button" name="Login" onclick="validationcheck();">
+              </div>
+              </form>
+             
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+
+      <!--página  juego numero-->
+    <div data-role="page" id="informacion" data-theme="a">
+        <div data-role="header" data-position="fixed">
+          <h1>Información sobre la Apps</h1>
+          </div>
+          <div data-role="main" class="ui-content">
+          <p>Este es el contenido </p>
+          </div>
+          <div data-role="footer" data-position="fixed">
+          <h1><a id="showAdmin" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Usuarios</a></h1>
+          </div>
+    </div>
+
+
+    <script type="text/javascript">
+      function validationcheck(){
+
+        if (document.mylogin.username.value == "") {
+        alert("Por favor Ingresa su Usuario .");
+        document.mylogin.username.focus(); 
+        } else if (document.mylogin.psw.value == "") {
+        alert("Por favor ingrese su Password.");
+        document.mylogin.psw.focus();
+        }
+        else
+        {
+          success();
+        }
+      }
+      
+        function success(){
+          onDeviceReady();
+        }
+    </script>
+    </body>
+    
+</html>
+
+<!-- >

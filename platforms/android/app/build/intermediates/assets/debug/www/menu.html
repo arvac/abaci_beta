@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Abaci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta charset="utf-8">
+    <script src="jquery-mobile/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="themes/abacithemedos.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <!-- CSS reset      <link rel="stylesheet" href="css/reset.css">  
+     <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script> -->
+    <link rel="stylesheet" href="css/styl.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="css/star.css"> <!-- animacion de estrellas -->
+    <link rel="stylesheet" href="css/menu.css"> <!-- animacion de estrellas -->
+    <link rel="stylesheet" href="css/bubble.css"> 
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
+<script>
+document.addEventListener("backbutton", onBackKeyDown, false);
+function onBackKeyDown(e) { 
+   e.preventDefault(); 
+  window.location.href='menu.html'; 
+}
+function relink() {
+      setTimeout("location.href='indexx.html'", 7500);
+        }
+        function principal() {
+      setTimeout("location.href='principal.html'", 400);
+        }
+</script>
+<script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+</style>
+  </head>
+  <body >
+  <!-- esta página es la de home-->
+     <div data-role="page" id="home"  data-theme="a" > 
+      <div data-role="content" >
+        <div class="talk-bubble tri-right border btm-right-in">
+        <div class="talktext">
+        <h1>Lista de Jugadores disponible </h1>
+        </div>
+        </div>
+        <div id="TableData"  class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop" >
+         </div>
+        </div> 
+       </div>
+      <!--página de log admin-->
+    <div data-role="page" id="admin" data-theme="a">
+      <div data-role="header">
+        <section class="cover-full-width" style="background-repeat: no-repeat;" data-150-top="background-position: 0px 0px;" data-top="background-position: 0px -50px;">
+          <div id="stars"></div>
+          <div id="stars2"></div>
+          <div id="stars3"></div>
+            <section class="cd-intro">
+             <div class="cd-intro-content mask">
+              <h1 class="ani" data-content="Administrador"><span>Administrador</span></h1>
+              <form action="" name="mylogin">
+              <div data-role="content">
+              <div class="username" data-role="fieldcontain">
+                <label for="username"> Usuario </label> <input name="username"
+                id="username" placeholder="ingrese su nombre por favor" value="" type="text">
+              </div>
+              <div class="psw" data-role="fieldcontain">
+                <label for="psw"> Password </label> <input name="password" id="psw"
+                placeholder="ingrese password por favor" value="" type="text">
+              </div>
+                <input id="login" value="Ingresar" type="button" name="Login" onclick="validationcheck();">
+              </div>
+              </form>
+            </div>
+          </section>
+         </section>
+       </div>
+      </div>
+      <!--página  juego numero-->
+    <div data-role="page" id="informacion" data-theme="a">
+      <div data-role="header" data-position="fixed">
+         <h1>Información sobre la Apps</h1>
+      </div>
+      <div data-role="main" class="ui-content">
+        <p>Este es el contenido </p>
+      </div>
+      <div data-role="footer" data-position="fixed">
+        <h1><a id="showTable" href="#home" data-icon="home" class="ui-btn-active" data-transition="slide">Usuarios</a></h1>
+      </div>
+    </div>
+
+
+ <!--perfil-->
+    <div data-role="page" id="perfil"  data-theme="b"  onload="relink();">
+        <div data-role="content">
+              <div class="list">
+                ID: <span id="id"></span>
+            <div id="clouds">
+              <div class="talk-bubble tri-right round border right-top">
+              <div class="talktext">
+              <h1> Cargando...</h1>
+              </div>
+              </div>
+            <div ><img class="cloud x1" src="images/naverun.png">
+            </div>
+            
+              <div ><img class="cloud x2" src="images/naverun.png"></div>
+              <div ><img class="cloud x3" src="images/naverun.png"></div>
+              <div ><img class="cloud x4" src="images/naverun.png"></div>
+              <div ><img class="cloud x5" src="images/naverun.png"></div>    
+            </div>
+            <section class="cover-full-width" style="background: url('https://nordvpn.com/wp-content/uploads/2016/03/download_head_bg.j'); background-repeat: no-repeat;" data-150-top="background-position: 0px 0px;" data-top="background-position: 0px -50px;">
+              <div id="stars"></div>
+              <div id="stars2"></div>
+              <div id="stars3"></div>
+            </section>      
+            </div>    
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+ function validationcheck(){
+
+  if (document.mylogin.username.value == "") {
+   alert("Por favor Ingresa su Usuario .");
+   document.mylogin.username.focus(); 
+  } else if (document.mylogin.psw.value == "") {
+   alert("Por favor ingrese su Password.");
+   document.mylogin.psw.focus();
+  }
+  else
+   {
+     success();
+   }
+ }
+ 
+ function success(){
+  onDeviceReady();
+ }
+</script>
+</body>
+    
+</html>
+
+<!-- >

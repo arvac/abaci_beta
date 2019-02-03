@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=276, user-scalable=1"/>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+        document.addEventListener("backbutton", onBackKeyDown, false);
+        function onBackKeyDown(e) { 
+        e.preventDefault(); 
+        window.location.href='menu.html#perfil'; 
+        }
+        </script>
+        <script src='lib/quintus.js'></script>
+        <script src='lib/quintus_sprites.js'></script>
+        <script src='lib/quintus_scenes.js'></script>
+        <script src='lib/quintus_input.js'></script>
+        <script src='lib/quintus_anim.js'></script>
+        <script src='lib/quintus_2d.js'></script>
+        <script src='lib/quintus_touch.js'></script>
+        <script src='lib/quintus_ui.js'></script>
+        <script src='scripts/racemath_ui.js'></script>
+        <script src='scripts/racemath_characters.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    </head>
+    <body style="background-color: #1b3f56; "  >
+
+        <script>
+        var Q =window.Q = Quintus()
+            .include("Sprites, Scenes, Input, 2D, Touch, UI, RacemathCharacter,RacemathUI")
+            .setup({
+                width: 420,
+                height: 480,
+
+                scaleToFit: true            
+            }).touch();            
+        
+       
+        
+        //detactar valor colision
+        Q.SPRITE_NONE = 0;
+        Q.SPRITE_RACER = 1;
+        Q.SPRITE_OTHER = 2; 
+       
+      
+
+         Q.scene('level',function(stage) {
+          var collisionLayer = new Q.TileLayer({dataAsset:"level_collision.json",sheet:"tiles",type:Q.SPRITE_OTHER});
+          var backgroundLayer = new Q.TileLayer({dataAsset:"level_background.json",sheet:"tiles",type:Q.SPRITE_NONE});
+          stage.collisionLayer(collisionLayer);
+          stage.insert(backgroundLayer);
+          //stage.loadAssets(stage.options.elements);
+       Q.state.set(stage.options.mathOperations);
+       Q.state.set(stage.options.punt);
+       console.log( Q.state.get('operations_min'));
+
+      
+        var player = new Q.Player({
+            x:20,
+            y:50,
+          });
+       
+          var  bluerival = new Q.Rival({
+            x:80,
+            y:120,
+            sheet: 'bluerival', vx: 100*Math.random()
+          });
+          var  greenrival = new Q.Rival({
+            x:120,
+            y:120,
+            sheet: 'greenrival', vx: 140*Math.random()
+          });
+          var  purplerival = new Q.Rival({
+            x:0,
+            y:120,
+            sheet: 'purplerival', vx: 140*Math.random()
+          });
+          var  princess = new Q.Princess({
+            x:1900,
+            y:120
+           
+          });
+          var flower = new Q.Flower({
+            x:440,
+            y:440,
+            //sheet: 'flower'
+          });
+           var flower1 = new Q.Flower({
+            x:440,
+            y:40,
+            //sheet: 'flower'
+          });
+
+          stage.insert(flower);
+          stage.insert(flower1);
+          stage.insert(princess);
+          stage.insert(player);
+          stage.insert(bluerival);
+          stage.insert(greenrival);
+          stage.insert(purplerival);
+         
+         
+           stage.add("viewport").follow(player,  {x:true,y:true},{minX:0,maxX:backgroundLayer.p.w, minY: 0   , maxY:backgroundLayer.p.h});
+
+        
+        });
+
+       
+       
+        
+       
+        Q.scene("endGame",function(stage){
+           var box = new Q.UI.Container({
+               x:Q.width/2,
+               y:Q.height/2,
+               radius: 55, 
+               fill:"rgba(5,0,6,0.5)"
+           });
+           stage.insert(box);
+           var button = new Q.UI.Button({
+            x:0,
+            y:0,
+            fill:"#4CAF50",
+            radius: 15, 
+            label:'Reintentar'
+           });
+           box.insert(button);
+      var label = new Q.UI.Text({
+              
+               x:10,
+               y:-10 - button.p.h,
+               label:stage.options.label
+           });  
+           box.insert(label);
+             box.fit(20);
+            button.on("click",function(){
+               Q.stageScene("level1",0);
+               Q.stageScene("ui",1);
+              //stage.stop();
+              window.location = 'updatefinal.html'
+           });
+
+        });
+
+        Q.load("sprites.png, sprites.json, level_collision.json, level_background.json, tiles.png, coin.png", function() {
+          Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+          Q.compileSheets("sprites.png",  "sprites.json");
+
+          Q.stageScene("level",0,{
+              elements:[
+
+              ],
+              mathOperations: {operations_min:0,operations_max: 10}, punt: { puntos:10}
+          });
+          Q.stageScene("ui", 1);
+     
+        });
+        </script>
+
+    </body>
+</html>
